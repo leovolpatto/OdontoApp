@@ -1,4 +1,4 @@
-app.controller("PessoasController", function($scope, $pessoasService){
+app.controller("PessoasController", function($scope, $rootScope, $pessoasService){
     
     $scope.pessoas = [];
     $scope.carregando = false;
@@ -11,6 +11,11 @@ app.controller("PessoasController", function($scope, $pessoasService){
             $scope.carregando = false;
             $scope.pessoas = callback.data;
         });
+        
+        $scope.pessoas = [
+            {nome:"pessoa1", sobrenome: "", idade : 20, ativa: true},
+            {nome:"pessoa2", sobrenome: "", idade : 30, ativa: true}
+        ];
     };
     
     $scope.abrirModalEdicao = function(pessoa){
@@ -47,6 +52,56 @@ app.controller("PessoasController", function($scope, $pessoasService){
         $('#modalPessoa').modal('hide');
     };
     
+    $scope.abrirModalHistoricos = function(pessoa){
+        $rootScope.abrirModalHistoricosParaPessoa(pessoa);
+    };    
+    
+    
     $scope.carregarPessoas();
+    
+});
+
+
+app.controller("HistoricosController", function($scope, $rootScope){
+    
+    $scope.historicos = [
+        {
+            id : 1,
+            descricao : 'teste'
+        }
+    ];
+    
+    $scope.servicos = [
+        {
+            id : 1,
+            descricao : 'servico 1'
+        },
+        {
+            id : 2,
+            descricao : 'servico 2'
+        }
+    ];
+    
+    $scope.servicoSelecionado = {id:1};
+    
+    $scope.abrirModalEdicao = function(pessoa){
+        $('#modalHistorico').modal('show');
+    };
+    
+    $scope.abrirModalNovo = function(){;
+        $('#modalHistorico').modal('show');
+    }
+    
+    $scope.excluir = function(pessoa){
+        console.log(pessoa);
+    };
+    
+    $scope.salvarEdicao = function(pessoa){;
+    };
+    
+    $rootScope.abrirModalHistoricosParaPessoa = function(pessoa){
+        console.log(pessoa);
+        $('#modalListHistoricos').modal('show');        
+    };     
     
 });

@@ -17,6 +17,7 @@
                 <th>Sobrenome</th>
                 <th>Idade</th>
                 <th>Ativo</th>
+                <th width="50px">Históricos</th>
                 <th width="30px"></th>
                 <th width="30px"></th>
             </tr>
@@ -26,6 +27,11 @@
             <td>{{pessoa.sobrenome}}</td>
             <td>{{pessoa.idade}}</td>
             <td>{{pessoa.ativo}}</td>
+            <td>
+                <button class="btn btn-warning" ng-click="abrirModalHistoricos(pessoa)">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                </button>
+            </td>
             <td>
                 <button class="btn" ng-click="excluir(pessoa)">
                     <span class="glyphicon glyphicon-trash"></span>
@@ -40,4 +46,5 @@
     </table>
     
     <div ng-include="'pessoasEdicaoModal.html'"></div>
+    <div ng-include="'historicosPessoaModal.html'"></div>    
 </div>

@@ -1,0 +1,59 @@
+<div ng-controller="HistoricosController">
+    <div class="modal fade" id="modalListHistoricos" tabindex="-1" role="dialog" aria-labelledby="modalListHistoricosLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title" id="modalListHistoricosLabel">Editando {{pessoaEmEdicao.nome}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-10">
+                            <button class="btn btn-success" ng-click="abrirModalNovo()">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                Incluir
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Descricao</th>
+                                <th>Serviço</th>
+                                <th>Data</th>
+                                <th>Valor</th>
+                                <th width="30px"></th>
+                                <th width="30px"></th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="hist in pessoas">
+                            <td>{{hist.descricao}}</td>
+                            <td>{{hist.servico}}</td>
+                            <td>{{hist.data}}</td>
+                            <td>{{hist.valor}}</td>
+                            <td>
+                                <button class="btn" ng-click="excluir(pessoa)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-default" ng-click="abrirModalEdicao(pessoa)">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>                        
+                            </td>
+                        </tr>
+                    </table>                
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-click="salvarEdicao(pessoaEmEdicao)" >Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'historicosEdicaoModal.html'"></div>
+    
+</div>
