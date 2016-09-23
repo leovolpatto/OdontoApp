@@ -1,0 +1,43 @@
+<div ng-controller="PessoasController">
+    <h3>Pessoas</h3>
+    <p>Existem {{pessoas.length}} pessoas cadastradas.</p>
+    <hr/>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <button class="btn btn-success" ng-click="abrirModalNovo()">
+                <span class="glyphicon glyphicon-plus"></span>
+                Incluir
+            </button>
+        </div>
+    </div>
+    <table class="table table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Idade</th>
+                <th>Ativo</th>
+                <th width="30px"></th>
+                <th width="30px"></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="pessoa in pessoas">
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.sobrenome}}</td>
+            <td>{{pessoa.idade}}</td>
+            <td>{{pessoa.ativo}}</td>
+            <td>
+                <button class="btn" ng-click="excluir(pessoa)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-default" ng-click="abrirModalEdicao(pessoa)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>                        
+            </td>
+        </tr>
+    </table>
+    
+    <div ng-include="'pessoasEdicaoModal.html'"></div>
+</div>

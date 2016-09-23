@@ -1,0 +1,7 @@
+.navbar-brand{
+    width: 200px;                
+}
+.navbar-brand img {
+    float: left;
+    padding-right: 10px;
+}

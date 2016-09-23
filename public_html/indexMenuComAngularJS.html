@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="odontoApp">
+    <head>
+        <title>OdontoApp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/css.css">
+    </head>
+    <body ng-controller="MainController">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="dente.jpg" height="30"/> 
+                        OdontoApp
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="menu in menus" id="{{menu.id}}}">
+                        <a href="#" ng-click="selecionarMenu(menu);">{{menu.nome}}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container" ng-show="menuAtivo.id == 'menuPessoas'">
+            <h3>Pessoas</h3>
+            <p>Como fazer com AngularJS</p>
+        </div>
+
+        <div class="container" ng-show="menuAtivo.id == 'menuServicos'">
+            <h3>Serviços</h3>
+            <p>Como fazer com AngularJS</p>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/mainController.js"></script>
+        <script src="app/pessoasController.js"></script>
+        <script src="app/servicosController.js"></script>
+
+    </body>
+</html>
