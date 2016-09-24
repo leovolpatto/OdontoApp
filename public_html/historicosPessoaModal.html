@@ -1,10 +1,10 @@
 <div ng-controller="HistoricosController">
     <div class="modal fade" id="modalListHistoricos" tabindex="-1" role="dialog" aria-labelledby="modalListHistoricosLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                    <h4 class="modal-title" id="modalListHistoricosLabel">Editando {{pessoaEmEdicao.nome}}</h4>
+                    <h4 class="modal-title" id="modalListHistoricosLabel">Editando históricos de {{pessoa.nome}}</h4>
                 </div>
                 <div class="modal-body">
 
@@ -27,18 +27,18 @@
                                 <th width="30px"></th>
                             </tr>
                         </thead>
-                        <tr ng-repeat="hist in pessoas">
+                        <tr ng-repeat="hist in historicos">
                             <td>{{hist.descricao}}</td>
                             <td>{{hist.servico}}</td>
                             <td>{{hist.data}}</td>
                             <td>{{hist.valor}}</td>
                             <td>
-                                <button class="btn" ng-click="excluir(pessoa)">
+                                <button class="btn" ng-click="excluir(hist)">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                             </td>
                             <td>
-                                <button class="btn btn-default" ng-click="abrirModalEdicao(pessoa)">
+                                <button class="btn btn-default" ng-click="abrirModalEdicao(hist)">
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </button>                        
                             </td>
@@ -47,8 +47,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" ng-click="salvarEdicao(pessoaEmEdicao)" >Salvar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                <h4 class="modal-title" id="modalHistoricoLabel">Editando {{pessoaEmEdicao.nome}}</h4>
+                <h4 class="modal-title" id="modalHistoricoLabel">Editando {{historicoEmEdicao.descricao}}</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -11,7 +11,7 @@
                         Descricao
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="pessoaEmEdicao.nome">
+                        <input type="text" ng-model="historicoEmEdicao.descricao">
                     </div>
                 </div>
 
@@ -20,12 +20,8 @@
                         Serviço
                     </div>
                     <div class="col-sm-8">
-                        
-                        <select>
-                            <option ng-repeat="servico in servicos" value="{{servico.id}}">{{servico.descricao}}</option>
+                        <select ng-options="servico.descricao for servico in servicos" ng-model="servicoSelectSelecionado" ng-change="definirServicoSelecionado(servicoSelectSelecionado)">
                         </select>
-                        
-                        <input type="text" ng-model="servicoSelecionado.id">
                     </div>
                 </div>
 
@@ -34,7 +30,7 @@
                         Data
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="pessoaEmEdicao.idade">
+                        <input type="text" ng-model="historicoEmEdicao.data">
                     </div>
                 </div>
 
@@ -43,14 +39,14 @@
                         Valor
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="pessoaEmEdicao.ativa">
+                        <input type="text" ng-model="historicoEmEdicao.valor">
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" ng-click="salvarEdicao(pessoaEmEdicao)" >Salvar</button>
+                <button type="button" class="btn btn-primary" ng-click="salvarEdicao(historicoEmEdicao)" >Salvar</button>
             </div>
         </div>
     </div>

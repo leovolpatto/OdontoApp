@@ -25,9 +25,9 @@
             </div>
         </nav>
 
-        <div class="container" id="pessoas" ng-include="'pessoasListagem.html'"></div>
+        <div class="container" id="pessoas" ng-include="'pessoasListagem.html?a=1'"></div>
 
-        <div class="container" id="servicos" ng-include="'servicosListagem.html'"></div>
+        <div class="container" id="servicos" ng-include="'servicosListagem.html?a=1'"></div>
 
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -36,7 +36,9 @@
         <script src="app/mainController.js"></script>
         <script src="app/pessoasController.js"></script>
         <script src="app/servicosController.js"></script>
+        <script src="app/historicosController.js"></script>
         <script src="app/pessoasService.js"></script>
+        <script src="app/servicosService.js"></script>
 
         <script>
                 $("#servicos").hide();

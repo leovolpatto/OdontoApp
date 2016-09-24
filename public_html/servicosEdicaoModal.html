@@ -3,49 +3,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                <h4 class="modal-title" id="modalServicoLabel">Editando {{pessoaEmEdicao.nome}}</h4>
+                <h4 class="modal-title" id="modalServicoLabel">Editando {{servicoSendoEditado.descricao}}</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-2">
-                        Nome
+                        Descrição
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" ng-model="pessoaEmEdicao.nome">
+                        <input type="text" ng-model="servicoSendoEditado.descricao">
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-2">
-                        Sobrenome
-                    </div>
-                    <div class="col-sm-8">
-                        <input type="text" ng-model="pessoaEmEdicao.sobrenome">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-2">
-                        Idade
-                    </div>
-                    <div class="col-sm-8">
-                        <input type="text" ng-model="pessoaEmEdicao.idade">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-2">
-                        Situaçao
-                    </div>
-                    <div class="col-sm-8">
-                        <input type="checkbox" ng-model="pessoaEmEdicao.ativa" ng-true-value="'1'" ng-false-value="'0'">                        
-                    </div>
-                </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" ng-click="salvarEdicao(pessoaEmEdicao)" >Salvar</button>
+                <button type="button" class="btn btn-primary" ng-click="salvarEdicao(servicoSendoEditado)" >Salvar</button>
             </div>
         </div>
     </div>

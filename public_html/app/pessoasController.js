@@ -11,22 +11,11 @@ app.controller("PessoasController", function($scope, $rootScope, $pessoasService
             $scope.carregando = false;
             $scope.pessoas = callback.data;
         });
-        
-        $scope.pessoas = [
-            {nome:"pessoa1", sobrenome: "", idade : 20, ativa: true},
-            {nome:"pessoa2", sobrenome: "", idade : 30, ativa: true}
-        ];
     };
     
     $scope.abrirModalEdicao = function(pessoa){
         $scope.pessoaOriginal = pessoa;
         $scope.pessoaEmEdicao = angular.copy(pessoa);
-
-        /*
-        $('#modalPessoa').on('hidden.bs.modal', function (e) {
-            alert("fechou");
-        });*/
-        
         $('#modalPessoa').modal('show');
     };
     
@@ -37,18 +26,44 @@ app.controller("PessoasController", function($scope, $rootScope, $pessoasService
     }
     
     $scope.excluir = function(pessoa){
-        console.log(pessoa);
+        $pessoasService.DeletePessoa(pessoa.id, 
+        function(result){
+            var indice = $scope.pessoas.indexOf(pessoa);
+            $scope.pessoas.splice(indice, 1);
+        }, 
+        function(falha){
+           alert(falha.data); 
+        });
+    };
+    
+    $scope.inserirPessoa = function(pessoa){
+        $pessoasService.PostPessoa(pessoa,
+                function (result) {
+                    angular.copy(pessoa, $scope.pessoaOriginal);
+                },
+                function (erro) {
+                    alert(erro.data);
+                });
+        $scope.pessoas.push(pessoa);        
+    };
+    
+    $scope.atualizarPessoa = function(pessoa){
+        $pessoasService.PutPessoa(pessoa,
+                function (result) {
+                    angular.copy(pessoa, $scope.pessoaOriginal);
+                },
+                function (erro) {
+                    alert(erro.data);
+                });     
     };
     
     $scope.salvarEdicao = function(pessoa){
         if($scope.pessoaOriginal == null){
-            //nova pessoa
-            $scope.pessoas.push(pessoa);
+            $scope.inserirPessoa(pessoa);
         }else{
-            //editar
+            $scope.atualizarPessoa(pessoa);
         }
         
-        angular.copy(pessoa, $scope.pessoaOriginal);
         $('#modalPessoa').modal('hide');
     };
     
@@ -56,52 +71,5 @@ app.controller("PessoasController", function($scope, $rootScope, $pessoasService
         $rootScope.abrirModalHistoricosParaPessoa(pessoa);
     };    
     
-    
     $scope.carregarPessoas();
-    
-});
-
-
-app.controller("HistoricosController", function($scope, $rootScope){
-    
-    $scope.historicos = [
-        {
-            id : 1,
-            descricao : 'teste'
-        }
-    ];
-    
-    $scope.servicos = [
-        {
-            id : 1,
-            descricao : 'servico 1'
-        },
-        {
-            id : 2,
-            descricao : 'servico 2'
-        }
-    ];
-    
-    $scope.servicoSelecionado = {id:1};
-    
-    $scope.abrirModalEdicao = function(pessoa){
-        $('#modalHistorico').modal('show');
-    };
-    
-    $scope.abrirModalNovo = function(){;
-        $('#modalHistorico').modal('show');
-    }
-    
-    $scope.excluir = function(pessoa){
-        console.log(pessoa);
-    };
-    
-    $scope.salvarEdicao = function(pessoa){;
-    };
-    
-    $rootScope.abrirModalHistoricosParaPessoa = function(pessoa){
-        console.log(pessoa);
-        $('#modalListHistoricos').modal('show');        
-    };     
-    
 });
